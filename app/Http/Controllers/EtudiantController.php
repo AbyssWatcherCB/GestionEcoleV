@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Hash;
 
 class EtudiantController extends Controller
 {
-   
     public function index()
     {
         $user = Auth::user();
@@ -54,9 +53,7 @@ class EtudiantController extends Controller
         ]);
     
         return redirect()->route('etudiants.index');
-    }
-    
-    
+    }    
     public function update(Request $request, $id){
         // Find the student
         $etudiant = Etudiant::findOrFail($id);
@@ -79,8 +76,7 @@ class EtudiantController extends Controller
         $etudiant->save();
     
         return redirect()->route('etudiants.index');
-    }
-    
+    }  
     public function show($id)
     {
         $etudiant = Etudiant::find($id);
@@ -91,9 +87,7 @@ class EtudiantController extends Controller
         $etudiant = Etudiant::findOrFail($id);
         $filieres = Filiere::all();
         return view('etudiants.form', compact('etudiant', 'filieres'));
-    }
-    
-   
+    }      
     public function destroy($id){
         Etudiant::destroy($id);
         return redirect()->route('etudiants.index');
